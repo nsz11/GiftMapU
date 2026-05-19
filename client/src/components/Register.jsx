@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import regFormValidationSchema from "../validations/registerValidation";
+import regFormValidationSchema from "../validations/RegisterValidation";
 import "../styles/Auth.css";
 
 const Register = () => {
