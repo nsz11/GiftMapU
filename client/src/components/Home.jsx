@@ -9,7 +9,7 @@ const Home = () => {
   const [shop, setShop] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/shops")
+    fetch("https://giftmapu-client.onrender.com/shops")
       .then(res => res.json())
       .then(data => {
         setShop(data[0]); // أول محل فقط في الهوم
