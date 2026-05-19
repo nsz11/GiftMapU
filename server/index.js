@@ -15,7 +15,14 @@ import ShopModel from "./models/ShopModel.js";
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
 app.use(express.json());
 
 const conStr =
@@ -24,7 +31,6 @@ const conStr =
 mongoose
   .connect(conStr)
   .then(() => {
-    console.log("MongoDB connected successfully");
     createDefaultAdmin();
   })
   .catch((err) => console.log("MongoDB error:", err));
@@ -47,10 +53,6 @@ const createDefaultAdmin = async () => {
         "https://th.bing.com/th/id/R.fc9e3d5f981e9d0c49ea0ff194262caf?rik=WhZvKrZCl12WJg&pid=ImgRaw&r=0",
       password: hashed,
     });
-
-    console.log("Default admin created");
-  } else {
-    console.log("Admin already exists");
   }
 };
 
@@ -94,8 +96,10 @@ app.post("/login", async (req, res) => {
       user: { ...user._doc, role: "user" },
     });
   } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Server error" });
+    return res.status(500).json({
+      message: "Server error",
+      error: err.message,
+    });
   }
 });
 
@@ -137,7 +141,11 @@ app.post("/register", async (req, res) => {
 
       await newAdmin.save();
 
-      return res.json({ message: "Admin registered", role: "admin" });
+      return res.status(201).json({
+        message: "Admin registered",
+        role: "admin",
+        user: newAdmin,
+      });
     }
 
     const newUser = new UserModel({
@@ -152,9 +160,16 @@ app.post("/register", async (req, res) => {
 
     await newUser.save();
 
-    res.json({ message: "User registered", role: "user" });
+    return res.status(201).json({
+      message: "User registered",
+      role: "user",
+      user: newUser,
+    });
   } catch (err) {
-    res.status(500).json({ message: "Register error", err });
+    return res.status(500).json({
+      message: "Register error",
+      error: err.message,
+    });
   }
 });
 
@@ -162,7 +177,9 @@ app.post("/forgotPassword", async (req, res) => {
   try {
     const { email } = req.body;
 
-    if (!email) return res.status(400).json({ message: "Email required" });
+    if (!email) {
+      return res.status(400).json({ message: "Email required" });
+    }
 
     const user = await UserModel.findOne({ email });
 
@@ -194,9 +211,12 @@ app.post("/forgotPassword", async (req, res) => {
       html: `<a href="${resetURL}">${resetURL}</a>`,
     });
 
-    res.json({ message: "Reset link sent" });
+    return res.json({ message: "Reset link sent" });
   } catch (err) {
-    res.status(500).json({ message: "Error" });
+    return res.status(500).json({
+      message: "Error",
+      error: err.message,
+    });
   }
 });
 
@@ -217,18 +237,21 @@ app.post("/resetPassword/:token", async (req, res) => {
 
     await user.save();
 
-    res.json({ message: "Password reset success" });
+    return res.json({ message: "Password reset success" });
   } catch (err) {
-    res.status(500).json({ message: "Reset error" });
+    return res.status(500).json({
+      message: "Reset error",
+      error: err.message,
+    });
   }
 });
 
 app.get("/shops", async (req, res) => {
   try {
     const shops = await ShopModel.find({});
-    res.json(shops);
+    return res.json(shops);
   } catch (err) {
-    res.status(500).json({ message: "Error fetching shops" });
+    return res.status(500).json({ message: "Error fetching shops" });
   }
 });
 
@@ -240,18 +263,18 @@ app.get("/shops/:id", async (req, res) => {
       return res.status(404).json({ message: "Shop not found" });
     }
 
-    res.json(shop);
+    return res.json(shop);
   } catch (err) {
-    res.status(500).json({ message: "Error fetching shop" });
+    return res.status(500).json({ message: "Error fetching shop" });
   }
 });
 
 app.get("/admin/shops", async (req, res) => {
   try {
     const shops = await ShopModel.find({});
-    res.json(shops);
+    return res.json(shops);
   } catch (err) {
-    res.status(500).json({ message: "Admin shops error" });
+    return res.status(500).json({ message: "Admin shops error" });
   }
 });
 
@@ -259,9 +282,9 @@ app.post("/admin/shop/add", async (req, res) => {
   try {
     const shop = new ShopModel(req.body);
     await shop.save();
-    res.json({ message: "Shop added", shop });
+    return res.json({ message: "Shop added", shop });
   } catch (err) {
-    res.status(500).json({ message: "Add shop error" });
+    return res.status(500).json({ message: "Add shop error" });
   }
 });
 
@@ -269,24 +292,26 @@ app.put("/admin/shop/update", async (req, res) => {
   try {
     const shop = await ShopModel.findById(req.body.id);
 
-    if (!shop) return res.status(404).json({ message: "Shop not found" });
+    if (!shop) {
+      return res.status(404).json({ message: "Shop not found" });
+    }
 
     Object.assign(shop, req.body);
 
     await shop.save();
 
-    res.json({ message: "Shop updated", shop });
+    return res.json({ message: "Shop updated", shop });
   } catch (err) {
-    res.status(500).json({ message: "Update error" });
+    return res.status(500).json({ message: "Update error" });
   }
 });
 
 app.delete("/admin/shop/delete/:id", async (req, res) => {
   try {
     await ShopModel.findByIdAndDelete(req.params.id);
-    res.json({ message: "Shop deleted" });
+    return res.json({ message: "Shop deleted" });
   } catch (err) {
-    res.status(500).json({ message: "Delete error" });
+    return res.status(500).json({ message: "Delete error" });
   }
 });
 
