@@ -24,14 +24,14 @@ const Login = () => {
 
     const user = result.payload?.user;
 
-    // SAVE USER
+    
     if (user) {
       localStorage.setItem(
         "user",
         JSON.stringify(user)
       );
 
-      // REDIRECT
+      
       if (user.role === "admin") {
         navigate("/AdminPage");
       } else {
@@ -49,7 +49,7 @@ const Login = () => {
 
         <form onSubmit={handleSubmit}>
 
-          {/* EMAIL */}
+          
           <label htmlFor="email">
             Email
           </label>
@@ -67,7 +67,7 @@ const Login = () => {
             required
           />
 
-          {/* PASSWORD */}
+          
           <label htmlFor="password">
             Password
           </label>
@@ -85,14 +85,14 @@ const Login = () => {
             required
           />
 
-          {/* ERROR MESSAGE */}
+          
           {msg && (
             <p className="error">
               {msg}
             </p>
           )}
 
-          {/* BUTTON */}
+          
           <button
             type="submit"
             disabled={loading}
