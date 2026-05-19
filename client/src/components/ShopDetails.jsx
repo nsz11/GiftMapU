@@ -18,7 +18,7 @@ const Shop = () => {
   return (
     <div className="shop-page">
 
-      {/* IMAGE HEADER */}
+      
       <div className="shop-hero">
         <img src={shop.shopImage} alt={shop.shopName} />
         <div className="overlay">
@@ -26,7 +26,7 @@ const Shop = () => {
         </div>
       </div>
 
-      {/* INFO */}
+      
       <div className="shop-content">
 
         <div className="shop-card">
