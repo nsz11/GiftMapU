@@ -87,7 +87,7 @@ const Shop = () => {
                   <p>{shop.address}</p>
                 </div>
 
-                {/* BUTTON */}
+                
                 <button
                   className="shop-btn"
                   onClick={() => navigate(`/shop/${shop._id}`)}
