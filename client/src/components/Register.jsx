@@ -19,7 +19,7 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("https://giftmapu-client.onrender.com/register", {
+      const response = await fetch("https://giftmapu-client-ugdx.onrender.com/, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const Register = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>🎁 GiftMap</h1>
+        <h1>GiftMap</h1>
         <h2>Register</h2>
 
         <form onSubmit={handleSubmit(onSubmit)}>
