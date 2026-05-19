@@ -19,7 +19,7 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("https://giftmapu-client-ugdx.onrender.com/register", {
+      const response = await fetch("https://giftmapu-server.onrender.com/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
