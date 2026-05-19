@@ -90,7 +90,7 @@ const Map = () => {
   return (
     <div className="map-page">
 
-      {/* SEARCH */}
+      
       <div className="map-search">
         <h2>Find Nearby Shops 📍</h2>
 
@@ -102,7 +102,7 @@ const Map = () => {
         />
       </div>
 
-      {/* MAP */}
+      
       <MapContainer
         center={[lat, lon]}
         zoom={13}
@@ -110,12 +110,12 @@ const Map = () => {
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        {/* USER LOCATION */}
+        
         <Marker position={[lat, lon]}>
           <Popup>Your Location</Popup>
         </Marker>
 
-        {/* SHOPS */}
+        
         {filteredShops.map((shop) => (
           <Marker
             key={shop._id}
@@ -147,7 +147,7 @@ const Map = () => {
         ))}
       </MapContainer>
 
-      {/* NEAREST SHOP */}
+      
       {nearestShop && (
         <div className="nearest-card">
           <h3>Nearest Shop 📍</h3>
