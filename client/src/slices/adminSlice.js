@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://giftmapu-client.onrender.com";
 
    //GET ALL SHOPS (ADMIN)
 export const getAdminShops = createAsyncThunk(
