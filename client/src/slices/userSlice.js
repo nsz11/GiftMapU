@@ -7,7 +7,7 @@ export const newUserThunk = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const res = await axios.post(
-        "http://localhost:8080/register",
+        "https://giftmapu-client.onrender.com/register",
         userData
       );
 
@@ -28,7 +28,7 @@ export const loginThunk = createAsyncThunk(
     try {
 
       const res = await axios.post(
-        "http://localhost:8080/login",
+        "https://giftmapu-client.onrender.com/login",
         userData
       );
 
@@ -50,7 +50,7 @@ export const getAllShops = createAsyncThunk(
     try {
 
       const res = await axios.get(
-        "http://localhost:8080/shops"
+        "https://giftmapu-client.onrender.com/shops"
       );
 
       return res.data;
