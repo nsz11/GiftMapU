@@ -7,7 +7,7 @@ const Shop = () => {
   const [shop, setShop] = useState(null);
 
   useEffect(() => {
-    fetch(`https://giftmapu-client.onrender.com/shops/${id}`)
+    fetch(`https://giftmapu-client-ugdx.onrender.com${id}`)
       .then(res => res.json())
       .then(data => setShop(data))
       .catch(err => console.log(err));
