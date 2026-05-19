@@ -42,7 +42,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* MAP PREVIEW */}
+     
       <section className="map-preview">
 
         <h2>
