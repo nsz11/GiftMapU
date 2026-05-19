@@ -3,7 +3,7 @@ import axios from "axios";
 
 const BASE_URL = "https://giftmapu-client.onrender.com";
 
-   //GET ALL SHOPS (ADMIN)
+   
 export const getAdminShops = createAsyncThunk(
   "admin/getShops",
   async (_, { rejectWithValue }) => {
@@ -16,7 +16,7 @@ export const getAdminShops = createAsyncThunk(
   }
 );
 
-   //ADD SHOP
+ 
 export const addShop = createAsyncThunk(
   "admin/addShop",
   async (shopData, { rejectWithValue }) => {
@@ -29,7 +29,7 @@ export const addShop = createAsyncThunk(
   }
 );
 
-   //UPDATE SHOP
+   
 export const updateShop = createAsyncThunk(
   "admin/updateShop",
   async (shopData, { rejectWithValue }) => {
@@ -42,7 +42,7 @@ export const updateShop = createAsyncThunk(
   }
 );
 
-   //DELETE SHOP
+   
 export const deleteShop = createAsyncThunk(
   "admin/deleteShop",
   async (id, { rejectWithValue }) => {
@@ -71,7 +71,7 @@ const adminSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
 
-    /* ===== SHOPS ===== */
+    
     builder
       .addCase(getAdminShops.fulfilled, (state, action) => {
         state.shops = action.payload;
