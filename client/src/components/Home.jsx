@@ -12,7 +12,7 @@ const Home = () => {
     fetch("https://giftmapu-client.onrender.com/shops")
       .then(res => res.json())
       .then(data => {
-        setShop(data[0]); // أول محل فقط في الهوم
+        setShop(data[0]);    
       })
       .catch(err => console.log(err));
   }, []);
@@ -20,7 +20,6 @@ const Home = () => {
   return (
     <div className="home">
 
-      {/* HERO */}
       <section className="hero">
         <div className="hero-overlay" />
         <div className="hero-content">
@@ -31,7 +30,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* BUTTONS */}
       <section className="hero-buttons-section">
         <div className="hero-buttons">
           <button className="btn btn-primary" onClick={() => navigate('/map')}>
@@ -68,7 +66,6 @@ const Home = () => {
                 attribution="© OpenStreetMap"
               />
 
-              {/* MARKER + NAVIGATION */}
               <Marker
                 position={[shop.location.lat, shop.location.lng]}
                 eventHandlers={{
@@ -98,7 +95,6 @@ const Home = () => {
 
       </section>
 
-      {/* FOOTER */}
       <footer className="footer">
         <p className="footer-title">Copyright</p>
         <p>© 2026 GiftMaps. All rights reserved.</p>
