@@ -20,7 +20,7 @@ const UserProfile = () => {
 
       <div className="profile-card">
 
-        {/* TOP */}
+       
         <div className="profile-header">
 
           <div className="profile-image">
@@ -68,7 +68,7 @@ const UserProfile = () => {
 
         </div>
 
-        {/* LOGOUT */}
+        
         <div className="logout-section">
 
           <button className="logout-btn" onClick={handleLogout}>
