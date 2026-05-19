@@ -7,7 +7,7 @@ export const newUserThunk = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const res = await axios.post(
-        "https://giftmapu-client-ugdx.onrender.com/register",
+        "https://giftmapu-server.onrender.com/register",
         userData
       );
 
