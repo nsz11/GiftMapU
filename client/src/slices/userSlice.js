@@ -50,7 +50,7 @@ export const getAllShops = createAsyncThunk(
     try {
 
       const res = await axios.get(
-        "https://giftmapu-client-ugdx.onrender.com/shops"
+        "https://giftmapu-server.onrender.com/shops"
       );
 
       return res.data;
