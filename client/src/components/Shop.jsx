@@ -21,7 +21,7 @@ const Shop = () => {
   const fetchShops = async () => {
     try {
 
-      const res = await fetch("https://giftmapu-client-ugdx.onrender.com/shop");
+      const res = await fetch("https://giftmapu-client-ugdx.onrender.com/shops");
       const data = await res.json();
 
       setShops(data);
