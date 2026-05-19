@@ -86,14 +86,14 @@ const userSlice = createSlice({
       state.msg = null;
       state.shops = [];
 
-      //REMOVE USER FROM STORAGE
+      
       localStorage.removeItem("user");
     },
   },
 
   extraReducers: (builder) => {
 
-   //REGISTER 
+    
     builder
       .addCase(newUserThunk.pending, (state) => {
 
