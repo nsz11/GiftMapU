@@ -14,9 +14,7 @@ const Login = () => {
 
   const { loading, msg } = useSelector((state) => state.user);
 
-  /* =========================
-     LOGIN
-  ========================= */
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -26,11 +24,14 @@ const Login = () => {
 
     const user = result.payload?.user;
 
-    // SAVE TO LOCALSTORAGE
+    // SAVE USER
     if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem(
+        "user",
+        JSON.stringify(user)
+      );
 
-      // REDIRECT BASED ON ROLE
+      // REDIRECT
       if (user.role === "admin") {
         navigate("/AdminPage");
       } else {
@@ -42,42 +43,73 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
+
         <h1>🎁 GiftMap</h1>
         <h2>Login</h2>
 
         <form onSubmit={handleSubmit}>
+
           {/* EMAIL */}
+          <label htmlFor="email">
+            Email
+          </label>
+
           <input
             type="email"
-            placeholder="Email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            autoComplete="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) =>
+              setEmail(e.target.value)
+            }
             required
           />
 
           {/* PASSWORD */}
+          <label htmlFor="password">
+            Password
+          </label>
+
           <input
             type="password"
-            placeholder="Password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            autoComplete="current-password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) =>
+              setPassword(e.target.value)
+            }
             required
           />
 
           {/* ERROR MESSAGE */}
-          {msg && <p className="error">{msg}</p>}
+          {msg && (
+            <p className="error">
+              {msg}
+            </p>
+          )}
 
           {/* BUTTON */}
-          <button type="submit" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
+          <button
+            type="submit"
+            disabled={loading}
+          >
+            {loading
+              ? "Logging in..."
+              : "Login"}
           </button>
         </form>
 
-        {/* REGISTER */}
         <p>
           Don't have an account?{" "}
-          <Link to="/register">Register</Link>
+          <Link to="/register">
+            Register
+          </Link>
         </p>
+
       </div>
     </div>
   );
