@@ -28,7 +28,7 @@ export const loginThunk = createAsyncThunk(
     try {
 
       const res = await axios.post(
-        "https://giftmapu-client-ugdx.onrender.com/login",
+        "https://giftmapu-server.onrender.com/login",
         userData
       );
 
