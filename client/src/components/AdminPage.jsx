@@ -142,9 +142,7 @@ const AdminPage = () => {
         <button onClick={handleAdd}>Add Shop</button>
       </div>
 
-      {/* =========================
-          RIGHT - SHOPS LIST
-      ========================= */}
+     
       <div className="admin-list">
         <h2>All Shops</h2>
 
@@ -154,12 +152,12 @@ const AdminPage = () => {
 
               <img src={shop.shopImage} alt={shop.shopName} />
 
-              {/* EDIT BUTTON ✏️ */}
+              
               <button
                 className="edit-btn"
                 onClick={() => handleEditClick(shop)}
               >
-                ✏️
+                EDIT
               </button>
 
               <div className="info">
@@ -180,9 +178,7 @@ const AdminPage = () => {
         </div>
       </div>
 
-      {/* =========================
-          EDIT MODAL
-      ========================= */}
+      
       {editingShop && (
         <div className="edit-modal">
           <div className="edit-box">
