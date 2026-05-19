@@ -1,0 +1,140 @@
+.navbar-top-strip {
+  height: 50px;
+  background: linear-gradient(90deg, #f3d8e8 0%, #d4a6d4 50%, #a682b8 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-top-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, #fff 1px, transparent 2px),
+    radial-gradient(circle at 70% 60%, #fff 1px, transparent 2px),
+    radial-gradient(circle at 85% 20%, #fff 1px, transparent 2px),
+    radial-gradient(circle at 40% 70%, #fff 1px, transparent 2px);
+  background-size: 200px 60px;
+  opacity: 0.6;
+}
+
+.navbar {
+  background: #fafafa;
+  padding: 0.8rem 2rem;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #291414;
+  background: #fff;
+
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  min-width: 100px;
+}
+
+.logo-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #6a2d8a;
+  font-family: Georgia, serif;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-menu a {
+  color: #555;
+  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: 3px;
+  transition: color 0.3s;
+  font-size: 1rem;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+.nav-menu a:hover {
+  color: #6a2d8a;
+}
+
+.nav-menu a.active {
+  color: #333;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.nav-menu .separator {
+  color: #aaa;
+  font-weight: 300;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  min-width: 80px;
+  justify-content: flex-end;
+}
+
+.cart-icon {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .nav-menu {
+    gap: 0.6rem;
+  }
+  .nav-menu a {
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu .separator {
+    display: none;
+  }
+}
