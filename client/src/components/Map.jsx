@@ -28,7 +28,7 @@ const Map = () => {
   const [nearestShop, setNearestShop] = useState(null);
 
   useEffect(() => {
-    fetch("https://giftmapu-client-ugdx.onrender.com")
+    fetch("https://giftmapu-client-ugdx.onrender.com/shops")
       .then((res) => res.json())
       .then((data) => setShops(data))
       .catch((err) => console.log(err));
