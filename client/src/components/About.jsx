@@ -30,11 +30,11 @@ const About = () => {
         <div className="about-section">
           <h2>Why Choose GiftMap?</h2>
           <ul>
-            <li>📍 Find nearby gift shops instantly</li>
-            <li>🔍 Search by location or shop name</li>
-            <li>🎁 Browse multiple categories</li>
-            <li>🗺️ Interactive map navigation</li>
-            <li>💼 Featured stores and recommendations</li>
+            <li> Find nearby gift shops instantly</li>
+            <li> Search by location or shop name</li>
+            <li> Browse multiple categories</li>
+            <li> Interactive map navigation</li>
+            <li> Featured stores and recommendations</li>
           </ul>
         </div>
 
